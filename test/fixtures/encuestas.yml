@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  cat_modulo_id: 
+  cat_hora_id: 
+  fechaTramite: 2014-10-23
+  nombre: MyString
+  edad: 1
+  telefono: MyString
+  procesada: false
+  observaciones: MyText
+
+two:
+  cat_modulo_id: 
+  cat_hora_id: 
+  fechaTramite: 2014-10-23
+  nombre: MyString
+  edad: 1
+  telefono: MyString
+  procesada: false
+  observaciones: MyText

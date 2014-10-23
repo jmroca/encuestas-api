@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Cat modulo:</strong>
+  <%= @encuesta.cat_modulo %>
+</p>
+
+<p>
+  <strong>Cat hora:</strong>
+  <%= @encuesta.cat_hora %>
+</p>
+
+<p>
+  <strong>Fechatramite:</strong>
+  <%= @encuesta.fechaTramite %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @encuesta.nombre %>
+</p>
+
+<p>
+  <strong>Edad:</strong>
+  <%= @encuesta.edad %>
+</p>
+
+<p>
+  <strong>Telefono:</strong>
+  <%= @encuesta.telefono %>
+</p>
+
+<p>
+  <strong>Procesada:</strong>
+  <%= @encuesta.procesada %>
+</p>
+
+<p>
+  <strong>Observaciones:</strong>
+  <%= @encuesta.observaciones %>
+</p>
+
+<%= link_to 'Edit', edit_encuesta_path(@encuesta) %> |
+<%= link_to 'Back', encuestas_path %>
