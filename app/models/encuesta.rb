@@ -7,7 +7,9 @@ class Encuesta < ActiveRecord::Base
   has_many :respuesta, through: :detalle_encuestas
 
   validates :fechaTramite,presence: :true
-
+  validates :cat_hora, :presence => true
+  validates :cat_modulo, :presence => true
+  
   validates_associated :cat_modulo
   validates_associated :cat_hora
   
