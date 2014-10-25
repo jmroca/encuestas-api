@@ -1,5 +1,14 @@
 Rails.application.routes.draw do
   resources :encuestas
+  resources :pregunta, only: [:show,:index]
+  resources :respuesta, only: [:index,:show]
+
+  get 'preguntas' => 'pregunta#index'
+  get 'preguntas/:id' => 'pregunta#show'
+
+  get 'respuestas' => 'respuesta#index'
+  get 'respuestas/:id' => 'respuesta#show'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
