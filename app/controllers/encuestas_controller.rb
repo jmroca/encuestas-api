@@ -24,10 +24,15 @@ class EncuestasController < ApplicationController
   # POST /encuestas
   # POST /encuestas.json
   def create
+    # crear encuesta en base a parametros validados
     @encuesta = Encuesta.new(encuesta_params)
 
+    # asociar las preguntas a la encuesta creada
+    @encuesta.pregunta = Pregunta.all
+        
     respond_to do |format|
       if @encuesta.save
+
         format.html { redirect_to @encuesta, notice: 'Encuesta was successfully created.' }
         format.json { render :show, status: :created, location: @encuesta }
       else
@@ -41,7 +46,7 @@ class EncuestasController < ApplicationController
   # PATCH/PUT /encuestas/1.json
   def update
     respond_to do |format|
-      if @encuesta.update(encuesta_params)
+      if @encuesta.update(update_encuesta_params)
         format.html { redirect_to @encuesta, notice: 'Encuesta was successfully updated.' }
         format.json { render :show, status: :ok, location: @encuesta }
       else
@@ -69,6 +74,15 @@ class EncuestasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def encuesta_params
-      params.require(:encuesta).permit(:cat_modulo_id, :cat_hora_id, :fechaTramite, :nombre, :edad, :telefono, :procesada, :observaciones)
+      params.require(:fechaTramite)
+      params.require(:cat_hora_id)
+      params.require(:cat_modulo_id)
+      params.permit(:cat_modulo_id, :cat_hora_id, :fechaTramite, :nombre, :edad, :telefono,:observaciones)
     end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def update_encuesta_params
+      params.permit(:cat_modulo_id, :cat_hora_id, :fechaTramite, :nombre, :edad, :telefono,:observaciones)
+    end
+
 end

@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
   	render json:response, status: :unprocessable_entity
   end
 
+  rescue_from(ActionController::ParameterMissing) do |parameter_missing_exception|
+  	faltante = "Parametro Faltante: #{parameter_missing_exception.param}"
+  	response = {status: 'error',fields:faltante}
+  	render json:response, status: :unprocessable_entity
+  end
+
+
 end

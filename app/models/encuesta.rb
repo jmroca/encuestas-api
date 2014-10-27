@@ -1,4 +1,6 @@
 class Encuesta < ActiveRecord::Base
+  after_initialize :defaults
+
   belongs_to :cat_modulo
   belongs_to :cat_hora
 
@@ -12,5 +14,10 @@ class Encuesta < ActiveRecord::Base
   
   validates_associated :cat_modulo
   validates_associated :cat_hora
+
+
+  def defaults
+    self.procesada = false if self.procesada.nil?
+  end
   
 end
