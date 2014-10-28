@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  root to: 'encuestas#index'
+
+  devise_for :usuarios
   resources :encuestas
   resources :pregunta, only: [:show,:index]
   resources :respuesta, only: [:index,:show]
