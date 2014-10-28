@@ -20,8 +20,35 @@ class RespuestaController < ApplicationController
   def show
     render json:@respuesta, :only =>[:id, :descripcion, :imagen],status: :ok
   end
+  
+=begin
+  begin
+  # GET /respuesta/new
+  def new
+    @respuesta = Respuesta.new
+  end
+
+  # GET /respuesta/1/edit
+  def edit
+  end
 
 
+  # POST /respuesta
+  # POST /respuesta.json
+  def create
+    @respuesta = Respuesta.new(respuesta_params)
+
+    respond_to do |format|
+      if @respuesta.save
+        format.html { redirect_to @respuesta, notice: 'Respuesta was successfully created.' }
+        format.json { render :show, status: :created, location: @respuesta }
+      else
+        format.html { render :new }
+        format.json { render json: @respuesta.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+=end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_respuesta
@@ -30,7 +57,7 @@ class RespuestaController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def respuesta_params
-      params.require(:respuesta).permit(:tipo)
+      params.require(:descripcion).permit(:imagen, :valor)
       
     end
 end

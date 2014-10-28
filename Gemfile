@@ -41,3 +41,6 @@ gem 'spring',        group: :development
 # use devise for user management
 gem 'devise'
 
+# Use Active Admin para mantenimiento
+gem 'activeadmin', github: 'gregbell/active_admin'
+
