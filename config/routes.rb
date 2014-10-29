@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :encuestas
   resources :pregunta, only: [:show,:index]
   resources :respuesta, only: [:index,:show]
+  resources :detalle_encuesta, only:[:create]
 
   get 'preguntas' => 'pregunta#index'
   get 'preguntas/:id' => 'pregunta#show'
