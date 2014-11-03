@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'main/index'
+  root to: 'main#index'
 
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  root to: 'encuestas#index'
-
+  
   devise_for :usuarios
   resources :encuestas
   resources :pregunta, only: [:show,:index]

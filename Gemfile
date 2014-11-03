@@ -44,3 +44,8 @@ gem 'devise'
 # Use Active Admin para mantenimiento
 gem 'activeadmin', github: 'gregbell/active_admin'
 
+# bootstrap
+gem 'bootstrap-sass', '~> 3.3.0'
+gem 'autoprefixer-rails'
+
+
