@@ -14,5 +14,11 @@
 //= require jquery_ujs
 //= require underscore-min
 //= require bootstrap-sprockets
+//= require hammer-min
 //= require angular
+//= require angular-material
+//= require angular-aria
+//= require angular-animate
+//= require angular-route
+//= require angular-rails-templates
 //= require app

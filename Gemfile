@@ -48,4 +48,6 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'bootstrap-sass', '~> 3.3.0'
 gem 'autoprefixer-rails'
 
+# manejo de angular templates en el asset pipeline de rails
+gem 'angular-rails-templates'
 
