@@ -1,0 +1,26 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <a href="#" class="brand">My blog</a>
+    <ul class="nav pull-right">
+      <li><a>New Post</a></li>
+    </ul>
+  </div>
+</div>
+
+<div>
+  <h1>{{ title }}</h1>
+
+
+  	<div ng-repeat="pregunta in dataPreguntas">
+  
+  		<p> {{pregunta.descripcion}}</p>
+	  <md-radio-group ng-model="respuestasMarcadas[pregunta.id].resp" ng-click="logRespuesta(pregunta)">
+
+	        <md-radio-button  ng-repeat="d in radioData" ng-value="d.value" aria-label="{{ d.label }}">
+	            {{ d.label }}
+	        </md-radio-button>
+
+	    </md-radio-group>
+
+	</div>
+</div>
