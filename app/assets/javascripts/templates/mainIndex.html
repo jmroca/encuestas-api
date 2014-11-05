@@ -8,16 +8,17 @@
 </div>
 
 <div>
-  <h1>{{ title }}</h1>
+  <h1>{{ mainCtrl.title }}</h1>
 
 
-  	<div ng-repeat="pregunta in dataPreguntas">
+  	<div ng-repeat="pregunta in mainCtrl.dataPreguntas">
   
   		<p> {{pregunta.descripcion}}</p>
-	  <md-radio-group ng-model="respuestasMarcadas[pregunta.id].resp" ng-click="logRespuesta(pregunta)">
+	  <md-radio-group ng-model="mainCtrl.respuestasMarcadas[pregunta.id].resp" 
+    ng-click="mainCtrl.logRespuesta(pregunta)">
 
-	        <md-radio-button  ng-repeat="d in radioData" ng-value="d.value" aria-label="{{ d.label }}">
-	            {{ d.label }}
+	        <md-radio-button  ng-repeat="respuesta in mainCtrl.dataRespuestas" ng-value="respuesta.id" aria-label="{{ respuesta.descripcion }}">
+	            {{ respuesta.descripcion }}
 	        </md-radio-button>
 
 	    </md-radio-group>

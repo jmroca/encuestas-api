@@ -12,8 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require underscore-min
-//= require bootstrap-sprockets
+//= require bootstrap
 //= require hammer-min
 //= require angular
 //= require angular-material
