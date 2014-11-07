@@ -11,6 +11,12 @@
 	    controllerAs: 'mainCtrl'
 	    
 	  })
+	   .when('/llenarEncuesta', {
+	    templateUrl: 'llenarEncuesta.html',
+	    controller: 'EncuestaController',
+	    controllerAs: 'encuestaCtrl'
+	    
+	  })
 
 	  });
 

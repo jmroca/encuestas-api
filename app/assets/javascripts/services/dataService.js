@@ -20,6 +20,12 @@
 
 	        return deferred.promise;
 	    };
+
+	    this.postRespuestaMarcada= function(encuestaid,preguntaid,respuestaid) {
+
+	    	$http.post('/detalle_encuesta.json', {encuesta_id: encuestaid, pregunta_id: preguntaid, respuesta_id:respuestaid});
+
+	    }
 	});
 
 })();

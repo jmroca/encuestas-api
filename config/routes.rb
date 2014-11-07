@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   resources :pregunta, only: [:show,:index]
   resources :respuesta, only: [:index,:show]
   resources :detalle_encuesta, only:[:create]
+  resources :cat_hora, only: :index
+  resources :cat_modulo, only: :index
 
   get 'preguntas' => 'pregunta#index'
   get 'preguntas/:id' => 'pregunta#show'

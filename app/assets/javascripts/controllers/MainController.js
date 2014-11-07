@@ -11,24 +11,32 @@
 
 		vm.$location = $location;
      	vm.$routeParams = $routeParams;
-    	$log.log('Hello World!');
+    	$log.log('MainController loaded!');
 
-		vm.title = 'Encuestas Satisfaccion';
+		vm.fechaTramite = new Date();
+		vm.horaTramite = 0;
+		vm.nombrePersona = '';
+		vm.edadPersona = '';
+		vm.telefonoPersona = '';
+		vm.horarioTramite = {};
+		vm.moduloTramite = {};
 
-		dataService.getCatalogo('preguntas')
+		dataService.getCatalogo('cat_hora')
 			.then(
 	           function(data) {
-	           vm.dataPreguntas = data;
+	           vm.dataHorarios = data;
+	           vm.horarioTramite = data[0];
 	           $log.log(data.length);
 	          },
 	          function(error) {
 	           $log.log(Date.now() + ' - ERROR - calls failed, error is\n\n' + JSON.stringify(error));
 	          });
 
-		dataService.getCatalogo('respuestas')
+		dataService.getCatalogo('cat_modulo')
 			.then(
 	           function(data) {
-	           vm.dataRespuestas = data;
+	           vm.dataModulos = data;
+	           vm.moduloTramite = data[0];
 	           $log.log(data.length);
 	          },
 	          function(error) {
@@ -36,27 +44,6 @@
 	          });
 
 
-		vm.respuestasMarcadas = [
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'},
-			{resp : '0'}
-		];
-
-  		
-  		vm.logRespuesta = function(pregunta){
-
-  			$log.log(pregunta.id);
-  			$log.log('Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
-  			
-  		};
 	});
 
 	

@@ -6,22 +6,57 @@
     </ul>
   </div>
 </div>
-
-<div>
-  <h1>{{ mainCtrl.title }}</h1>
-
-
-  	<div ng-repeat="pregunta in mainCtrl.dataPreguntas">
-  
-  		<p> {{pregunta.descripcion}}</p>
-	  <md-radio-group ng-model="mainCtrl.respuestasMarcadas[pregunta.id].resp" 
-    ng-click="mainCtrl.logRespuesta(pregunta)">
-
-	        <md-radio-button  ng-repeat="respuesta in mainCtrl.dataRespuestas" ng-value="respuesta.id" aria-label="{{ respuesta.descripcion }}">
-	            {{ respuesta.descripcion }}
-	        </md-radio-button>
-
-	    </md-radio-group>
-
+<section>
+<div class="container">
+	<div class="row">
+        <div class="col-xs-6">
+        	<md-toolbar>
+      		<h2 class="md-toolbar-tools">
+        	<span>Datos del Tramite (obligatorios)</span>
+      		</h2>
+    		</md-toolbar></div>
+        <div class="col-xs-6">
+        	<md-toolbar>
+      		<h2 class="md-toolbar-tools">
+        	<span>Datos del Encuestado (opcionales)</span>
+      		</h2>
+    		</md-toolbar></div>
+    </div>
+	<div class="row">
+		<div class="col-xs-6">
+		  <md-content>
+		    <div>
+		    <form id="inputdatos" style="padding: 20px;">
+		        <md-text-float label="Fecha Tramite" ng-model="mainCtrl.fechaTramite" type="date" required></md-text-float>
+		        <label for="HoraTramite" class="md-input-group">Hora Tramite:   </label>
+		        <select  id="HoraTramite" ng-model="mainCtrl.horarioTramite" ng-options="horario.descripcion for horario in mainCtrl.dataHorarios" required>
+		    		
+		  		</select> 
+		  		<label for="modulo" class="md-input-group">Modulo Tramite:   </label>
+		  		<select  id = "modulo" ng-model="mainCtrl.moduloTramite" ng-options="modulo.descripcion for modulo in mainCtrl.dataModulos" required>
+		    	</select>
+		      </form>
+			</div>
+		  </md-content>
+		</div>
+		<div class="col-xs-6">
+		  <md-content>
+		    <div>
+		    <form id="inputdatos" style="padding: 20px;">
+		        <md-text-float label="Nombre (opcional)" ng-model="mainCtrl.nombrePersona">
+		    </md-text-float>
+		        <md-text-float label="Edad (opcional)" ng-model="mainCtrl.edadPersona" type="number">
+		    </md-text-float>
+		        <md-text-float label="Telefono (opcional)" ng-model="mainCtrl.telefonoPersona">
+		    </md-text-float>
+		        
+		    </form>
+			</div>
+		  </md-content>
+		</div>
 	</div>
 </div>
+</section>
+
+
+  
