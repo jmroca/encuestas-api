@@ -6,57 +6,75 @@
     </ul>
   </div>
 </div>
+
+<form id="inputdatos" style="padding: 20px;" novalidate ng-submit="mainCtrl.crearEncuesta()">
+	
 <section>
-<div class="container">
-	<div class="row">
-        <div class="col-xs-6">
-        	<md-toolbar>
-      		<h2 class="md-toolbar-tools">
-        	<span>Datos del Tramite (obligatorios)</span>
-      		</h2>
-    		</md-toolbar></div>
-        <div class="col-xs-6">
-        	<md-toolbar>
-      		<h2 class="md-toolbar-tools">
-        	<span>Datos del Encuestado (opcionales)</span>
-      		</h2>
-    		</md-toolbar></div>
-    </div>
-	<div class="row">
-		<div class="col-xs-6">
-		  <md-content>
-		    <div>
-		    <form id="inputdatos" style="padding: 20px;">
-		        <md-text-float label="Fecha Tramite" ng-model="mainCtrl.fechaTramite" type="date" required></md-text-float>
-		        <label for="HoraTramite" class="md-input-group">Hora Tramite:   </label>
-		        <select  id="HoraTramite" ng-model="mainCtrl.horarioTramite" ng-options="horario.descripcion for horario in mainCtrl.dataHorarios" required>
-		    		
-		  		</select> 
-		  		<label for="modulo" class="md-input-group">Modulo Tramite:   </label>
-		  		<select  id = "modulo" ng-model="mainCtrl.moduloTramite" ng-options="modulo.descripcion for modulo in mainCtrl.dataModulos" required>
-		    	</select>
-		      </form>
+				    
+	<div layout="vertical" layout-sm="horizontal" layout-padding>
+		<div flex>
+	        <div layout="vertical">
+	        	<div flex>
+		        	<md-toolbar>
+		      		<h2 class="md-toolbar-tools">
+		        	<span>Datos del Tramite (obligatorios)</span>
+		      		</h2>
+		    		</md-toolbar>
+	    		</div> 
+	    		<div flex>
+				  <md-content>
+				    <div>
+				        <md-text-float label="Fecha Tramite" ng-model="mainCtrl.fechaTramite" type="date" required></md-text-float>
+				        <label for="HoraTramite" class="md-input-group">Hora Tramite:   </label>
+				        <select  id="HoraTramite" ng-model="mainCtrl.horarioTramite" ng-options="horario.descripcion for horario in mainCtrl.dataHorarios" required>
+				    		
+				  		</select> 
+				  		<label for="modulo" class="md-input-group">Modulo Tramite:   </label>
+				  		<select  id = "modulo" ng-model="mainCtrl.moduloTramite" ng-options="modulo.descripcion for modulo in mainCtrl.dataModulos" required>
+				    	</select>
+				      </div>
+				  </md-content>
+				</div>
 			</div>
-		  </md-content>
 		</div>
-		<div class="col-xs-6">
-		  <md-content>
-		    <div>
-		    <form id="inputdatos" style="padding: 20px;">
-		        <md-text-float label="Nombre (opcional)" ng-model="mainCtrl.nombrePersona">
-		    </md-text-float>
-		        <md-text-float label="Edad (opcional)" ng-model="mainCtrl.edadPersona" type="number">
-		    </md-text-float>
-		        <md-text-float label="Telefono (opcional)" ng-model="mainCtrl.telefonoPersona">
-		    </md-text-float>
-		        
-		    </form>
-			</div>
-		  </md-content>
+
+	    <div flex>
+	    	<div layout="vertical">
+	    		<div flex>
+		        	<md-toolbar>
+		      		<h2 class="md-toolbar-tools">
+		        	<span>Datos del Encuestado (opcionales)</span>
+		      		</h2>
+		    		</md-toolbar>
+		    	<div>
+		    	<div flex>
+				  <md-content>
+				    <div>
+					    <md-text-float label="Nombre (opcional)" ng-model="mainCtrl.nombrePersona">
+					    </md-text-float required>
+					        <md-text-float label="Edad (opcional)" ng-model="mainCtrl.edadPersona" type="number" required>
+					    </md-text-float>
+					        <md-text-float label="Telefono (opcional)" ng-model="mainCtrl.telefonoPersona">
+					    </md-text-float>
+					    
+					</div>
+				  </md-content>
+				</div>
+			</div>	
+	    </div>
+	</div>
+</section>
+
+	<div layout = "horizontal" layout-sm="vertical" layout-align="center center">
+		<div flex>
+			<md-button class="md-raised md-primary" aria-label="Llenar Encuesta" type="submit"
+					ng-click="mainCtrl.crearEncuesta()">
+	   		 Llenar Encuesta Satisfaccion
+	 		</md-button>
 		</div>
 	</div>
-</div>
-</section>
+</form>
+
 
 
   

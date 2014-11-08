@@ -21,6 +21,10 @@
 		vm.horarioTramite = {};
 		vm.moduloTramite = {};
 
+		vm.crearEncuesta = function(){
+			return 1;
+		}
+
 		dataService.getCatalogo('cat_hora')
 			.then(
 	           function(data) {
