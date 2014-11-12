@@ -2,17 +2,27 @@
 
 <md-content class="md-padding">
   	<div ng-repeat="pregunta in encuestaCtrl.dataPreguntas">
-  
-  		<p> {{pregunta.descripcion}}</p>
-	  <md-radio-group ng-model="encuestaCtrl.respuestasMarcadas[pregunta.id].resp" 
-    ng-click="encuestaCtrl.logRespuesta(pregunta)">
+  		<div layout="vertical" layout-sm="horizontal" layout-align="start">
+			<div flex-sm="33" flex>
+  				<p> {{pregunta.descripcion}}</p>
+  			</div>
+  			<div>
+				  <md-radio-group ng-model="encuestaCtrl.respuestasMarcadas[pregunta.id].resp" 
+			    ng-click="encuestaCtrl.marcarRespuestaPregunta(pregunta)">
 
-	        <md-radio-button ng-repeat="respuesta in encuestaCtrl.dataRespuestas" ng-value="respuesta.id" aria-label="{{ respuesta.descripcion }}">
-	            {{ respuesta.descripcion }}
-	        </md-radio-button>
-
-	    </md-radio-group>
-
+			    	<div layout="horizontal">
+			    		
+				        <md-radio-button ng-repeat="respuesta in encuestaCtrl.dataRespuestas" ng-value="respuesta.id" aria-label="{{ respuesta.descripcion }}">
+				        <div>
+				            <img ng-Src={{respuesta.imagen}} style="height:41px; width: 32px"> {{ respuesta.descripcion }}
+				        </div>
+				        </md-radio-button>
+				        
+				     </div>
+				    </md-radio-group>
+			</div>
+		</div>
+		<md-divider ng-if="!$last"></md-divider>
 	</div>
 </div>
 </md-content>

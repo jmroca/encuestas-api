@@ -1,0 +1,18 @@
+<h1>{{ encuestaCtrl.title }}</h1>
+
+<md-content class="md-padding">
+  	<div ng-repeat="pregunta in encuestaCtrl.dataPreguntas">
+  
+  		<p> {{pregunta.descripcion}}</p>
+	  <md-radio-group ng-model="encuestaCtrl.respuestasMarcadas[pregunta.id].resp" 
+    ng-click="encuestaCtrl.logRespuesta(pregunta)">
+
+	        <md-radio-button ng-repeat="respuesta in encuestaCtrl.dataRespuestas" ng-value="respuesta.id" aria-label="{{ respuesta.descripcion }}">
+	            {{ respuesta.descripcion }}
+	        </md-radio-button>
+
+	    </md-radio-group>
+
+	</div>
+</div>
+</md-content>

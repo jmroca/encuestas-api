@@ -5,3 +5,7 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.ng-invalid.required {
+	border-color: #FA787E;
+}

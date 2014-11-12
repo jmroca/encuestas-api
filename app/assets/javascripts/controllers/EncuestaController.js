@@ -2,7 +2,8 @@
 	
 	'use strict';
 
-	var app = angular.module('controllers', []);
+	var	app = angular.module('EncuestasApp.controllers', []);
+	
 
 	app.controller('EncuestaController', function(dataService, $log, $routeParams, $location) {
 
@@ -11,9 +12,9 @@
 
 		vm.$location = $location;
      	vm.$routeParams = $routeParams;
-    	$log.log('Hello World!');
+    	$log.log('EncuestaController loaded!');
 
-		vm.title = 'Encuestas Satisfaccion';
+		vm.title = 'Encuesta Satisfaccion';
 
 		dataService.getCatalogo('preguntas')
 			.then(
@@ -50,14 +51,15 @@
 			{resp : '0'}
 		];
 
-  		
-  		vm.logRespuesta = function(pregunta){
+		vm.marcarRespuestaPregunta = function(pregunta){
 
   			$log.log(pregunta.id);
-  			$log.log('Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
+  			$log.log('Pregunta# ' + pregunta.id + ' Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
   			dataService.postRespuestaMarcada(10,pregunta.id, vm.respuestasMarcadas[pregunta.id].resp);
   			
   		};
+  		
+  		
 	});
 
 	

@@ -2,7 +2,7 @@
 	
 	'use strict';
 
-	var app = angular.module('services', []);
+	var app = angular.module('EncuestasApp.services', []);
 
 	//service style, probably the simplest one
 	app.service('dataService', function($http, $log, $q) {
@@ -21,9 +21,30 @@
 	        return deferred.promise;
 	    };
 
-	    this.postRespuestaMarcada= function(encuestaid,preguntaid,respuestaid) {
+	    this.postCrearEncuesta = function(pfechaTramite,phoraId,pmoduloId,pnombre,pedad,ptelefono){
 
-	    	$http.post('/detalle_encuesta.json', {encuesta_id: encuestaid, pregunta_id: preguntaid, respuesta_id:respuestaid});
+	    	var deferred = $q.defer();
+
+	    	$http.post('/encuestas.json', {fechaTramite: pfechaTramite
+	    									, cat_hora_id: phoraId
+	    									, cat_modulo_id: pmoduloId
+	    									, nombre: pnombre
+	    									, edad: pedad
+	    									, telefono: ptelefono})
+	    				.success(function(data) {
+			        		deferred.resolve(data);
+			        	}).error(function(msg,code) {
+			        		deferred.reject(msg);
+			        		$log.log(msg,code);	      
+			        	});
+
+	        return deferred.promise;	
+
+	    };
+
+	    this.postRespuestaMarcada= function(encuestaId,preguntaId,respuestaId) {
+
+	    	$http.post('/detalle_encuesta.json', {encuesta_id: encuestaId, pregunta_id: preguntaId, respuesta_id:respuestaId});
 
 	    }
 	});
