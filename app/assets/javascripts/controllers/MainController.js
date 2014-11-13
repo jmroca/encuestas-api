@@ -24,6 +24,7 @@
 		vm.moduloTramite = {};
 		vm.dataEncuesta = {};
 		vm.encuestaCreada = false;
+		vm.selectedTab = 0;
 
 		// obtener datos via servicio
 		dataService.getCatalogo('cat_hora')
@@ -59,13 +60,17 @@
 					function(data){
 						vm.dataEncuesta = data;
 						$log.log(data.id);
-						vm.encuestaCreada = true;
+						vm.selectedTab = 1;
+
 					},
 					function(error) {
 						vm.encuestaCreada = false;
+						vm.selectedTab = 0;
 						$log.log(Date.now() + ' - ERROR - calls failed, error is\n\n' + JSON.stringify(error));
 					});
-
+			
+			// activar tabs 
+			vm.encuestaCreada = true;
 			
 		}
 

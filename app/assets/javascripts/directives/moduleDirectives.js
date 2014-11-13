@@ -13,6 +13,15 @@
 		};
 	});
 	
+	app.directive('sugerenciasEncuesta', function(){
+		return{
+			restrict: 'E',
+			templateUrl: 'sugerenciasEncuesta.html'
+
+			
+		};
+	});
+	
 
 	app.directive('mostrarEncuesta', function(){
 		return{

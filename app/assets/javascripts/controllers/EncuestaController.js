@@ -15,6 +15,7 @@
     	$log.log('EncuestaController loaded!');
 
 		vm.title = 'Encuesta Satisfaccion';
+		vm.textoSugerencias = '';
 
 		dataService.getCatalogo('preguntas')
 			.then(
@@ -53,8 +54,8 @@
 
 		vm.marcarRespuestaPregunta = function(pregunta){
 
-  			$log.log(pregunta.id);
-  			$log.log('Pregunta# ' + pregunta.id + ' Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
+  			$log.log(vm.textoSugerencias);
+  			$log.log('EncuestaId: ' + dataService.getEncuestaActiva().id +  ' -> Pregunta# ' + pregunta.id + ' Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
   			dataService.postRespuestaMarcada(10,pregunta.id, vm.respuestasMarcadas[pregunta.id].resp);
   			
   		};

@@ -7,6 +7,8 @@
 	//service style, probably the simplest one
 	app.service('dataService', function($http, $log, $q) {
 	    
+	    var encuestaActiva = {};
+
 	    this.getCatalogo = function(catalogo) {
 	        
 	        var deferred = $q.defer();
@@ -23,6 +25,9 @@
 
 	    this.postCrearEncuesta = function(pfechaTramite,phoraId,pmoduloId,pnombre,pedad,ptelefono){
 
+	    	// limpiar objeto de encuesta activa
+	    	encuestaActiva = {};
+
 	    	var deferred = $q.defer();
 
 	    	$http.post('/encuestas.json', {fechaTramite: pfechaTramite
@@ -33,6 +38,7 @@
 	    									, telefono: ptelefono})
 	    				.success(function(data) {
 			        		deferred.resolve(data);
+			        		encuestaActiva = data;
 			        	}).error(function(msg,code) {
 			        		deferred.reject(msg);
 			        		$log.log(msg,code);	      
@@ -46,7 +52,11 @@
 
 	    	$http.post('/detalle_encuesta.json', {encuesta_id: encuestaId, pregunta_id: preguntaId, respuesta_id:respuestaId});
 
-	    }
+	    };
+
+	    this.getEncuestaActiva = function(){
+	    	return encuestaActiva;
+	    };
 	});
 
 })();

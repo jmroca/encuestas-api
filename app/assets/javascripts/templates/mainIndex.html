@@ -1,25 +1,23 @@
-<div class="navbar navbar-fixed-top">
-  <div class="navbar-inner">
-    <a href="#" class="brand">My blog</a>
-    <ul class="nav pull-right">
-      <li><a>New Post</a></li>
-    </ul>
-  </div>
-</div>
 
-<form name="nuevaEncuestaForm" style="padding: 20px;" ng-submit="nuevaEncuestaForm.$valid && mainCtrl.crearEncuesta()" novalidate >
+
+<md-tabs selected='mainCtrl.selectedTab'>
+   <md-tab label="Datos Encuesta" >
+	<form name="nuevaEncuestaForm" style="padding: 20px;" ng-submit="nuevaEncuestaForm.$valid && mainCtrl.crearEncuesta()" novalidate >
 	
-<section>
-				    
+	<section>
+	        			    
 	<div layout="vertical" layout-sm="horizontal" layout-padding>
 		<div flex>
-	        <div layout="vertical">
+			<div layout="vertical">
 	        	<div flex>
-		        	<md-toolbar>
+		        	
+		        	<md-toolbar >
 		      		<h2 class="md-toolbar-tools">
-		        	<span>Datos del Tramite (obligatorios)</span>
-		      		</h2>
+		        	
+		        	<span>Datos del Tramite</span>
+		        	</h2>
 		    		</md-toolbar>
+	    			
 	    		</div> 
 	    		<div flex>
 				  <md-content>
@@ -37,6 +35,7 @@
 				  </md-content>
 				</div>
 			</div>
+		      	
 		</div>
 
 	    <div flex>
@@ -52,7 +51,7 @@
 				  <md-content>
 				    <div>
 					    <md-text-float label="Nombre" ng-model="mainCtrl.nombrePersona">
-					    </md-text-float required>
+					    </md-text-float>
 					        <md-text-float label="Edad" ng-model="mainCtrl.edadPersona" type="number">
 					    </md-text-float>
 					        <md-text-float label="Telefono" ng-model="mainCtrl.telefonoPersona">
@@ -64,7 +63,9 @@
 			</div>	
 	    </div>
 	</div>
-</section>
+		
+	</section>
+
 
 	<div layout = "horizontal" layout-sm="vertical" layout-align="center center">
 		<div flex>
@@ -74,10 +75,17 @@
 		</div>
 	</div>
 </form>
+</md-tab>
 
-<llenar-encuesta ng-show="mainCtrl.encuestaCreada"> </llenar-encuesta>
+<md-tab label="Responder Encuesta" ng-disabled='!mainCtrl.encuestaCreada'>
+	<llenar-encuesta ng-show="mainCtrl.encuestaCreada"> </llenar-encuesta>
+</md-tab>
 
+<md-tab label="Sugerencias" ng-disabled='!mainCtrl.encuestaCreada'>
+	<sugerencias-encuesta></sugerencias-encuesta>
+</md-tab>
+
+</md-tabs>
 
   <div>Icons made by Yannick from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
-  
