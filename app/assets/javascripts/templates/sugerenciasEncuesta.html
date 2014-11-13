@@ -6,13 +6,21 @@
     	</h2>
 	</div> 
 	<div flex>
-	  <textarea rows="10" cols="35" ng-model="encuestaCtrl.textoSugerencias"></textarea>
+	  <textarea rows="10" cols="35" ng-model="textoSugerencias"></textarea>
 	</div>
 	<div flex>
 		<h4>
     		<span>Esta informacion es importante para nosotros, Gracias.</span>
     	</h4>
 	</div> 
+
+<div layout = "horizontal" layout-sm="vertical" layout-align="center center">
+		<div flex>
+			<md-button class="md-raised md-primary" aria-label="Llenar Encuesta" ng-click="registrarSugerencias()">
+	   		 Registrar
+	 		</md-button>
+		</div>
+	</div>
 	
 </div>
 	      	

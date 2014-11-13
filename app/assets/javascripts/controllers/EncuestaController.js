@@ -15,8 +15,7 @@
     	$log.log('EncuestaController loaded!');
 
 		vm.title = 'Encuesta Satisfaccion';
-		vm.textoSugerencias = '';
-
+		
 		dataService.getCatalogo('preguntas')
 			.then(
 	           function(data) {
@@ -54,7 +53,7 @@
 
 		vm.marcarRespuestaPregunta = function(pregunta){
 
-  			$log.log(vm.textoSugerencias);
+  			$log.log(dataService.getEncuestaActiva().observaciones);
   			$log.log('EncuestaId: ' + dataService.getEncuestaActiva().id +  ' -> Pregunta# ' + pregunta.id + ' Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
   			dataService.postRespuestaMarcada(10,pregunta.id, vm.respuestasMarcadas[pregunta.id].resp);
   			

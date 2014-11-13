@@ -20,6 +20,7 @@
 		vm.nombrePersona = '';
 		vm.edadPersona = '';
 		vm.telefonoPersona = '';
+		vm.textoSugerencias = '';
 		vm.horarioTramite = {};
 		vm.moduloTramite = {};
 		vm.dataEncuesta = {};
@@ -61,6 +62,7 @@
 						vm.dataEncuesta = data;
 						$log.log(data.id);
 						vm.selectedTab = 1;
+						vm.textoSugerencias = dataService.getEncuestaActiva().observaciones;
 
 					},
 					function(error) {
@@ -74,7 +76,13 @@
 			
 		}
 
+
+		vm.logSugerencias = function(){
+			$log.log(vm.textoSugerencias);
+		}
+
 	});
+
 
 	
 })();

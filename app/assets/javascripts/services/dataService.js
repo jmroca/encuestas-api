@@ -4,7 +4,6 @@
 
 	var app = angular.module('EncuestasApp.services', []);
 
-	//service style, probably the simplest one
 	app.service('dataService', function($http, $log, $q) {
 	    
 	    var encuestaActiva = {};
@@ -38,6 +37,7 @@
 	    									, telefono: ptelefono})
 	    				.success(function(data) {
 			        		deferred.resolve(data);
+			        		// set objeo de encuesta activa
 			        		encuestaActiva = data;
 			        	}).error(function(msg,code) {
 			        		deferred.reject(msg);

@@ -16,7 +16,11 @@
 	app.directive('sugerenciasEncuesta', function(){
 		return{
 			restrict: 'E',
-			templateUrl: 'sugerenciasEncuesta.html'
+			templateUrl: 'sugerenciasEncuesta.html',
+			scope: {
+				textoSugerencias: '=',
+				registrarSugerencias: '&'
+			}
 
 			
 		};
