@@ -51,3 +51,5 @@ gem 'autoprefixer-rails'
 # manejo de angular templates en el asset pipeline de rails
 gem 'angular-rails-templates'
 
+# generar archivo seed automaticamente
+gem 'seed_dump'
