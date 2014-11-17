@@ -3,7 +3,6 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 #= require_self
 #= require_tree ./services
-#= require_tree ./filters
 #= require_tree ./controllers
 #= require_tree ./directives
 #= require_tree ./templates
