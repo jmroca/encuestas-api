@@ -54,4 +54,6 @@ gem 'angular-rails-templates'
 # generar archivo seed automaticamente
 gem 'seed_dump'
 
+gem 'rails_12factor', group: :production
+
 
