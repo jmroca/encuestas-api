@@ -1,6 +1,3 @@
-AdminUser.create!([
-  {email: "admin@example.com", encrypted_password: "$2a$10$NZ8FqwPyQ08nIzTtBXyF4.Hzzi1qJAMJW/eqb7TDCju907WdiT96a", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 3, current_sign_in_at: "2014-11-11 23:02:57", last_sign_in_at: "2014-10-28 01:01:38", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
-])
 CatHora.create!([
   {descripcion: "8:00 a 9:00", matutino: true},
   {descripcion: "9:00 a 12:00", matutino: true},
@@ -33,5 +30,8 @@ Respuesta.create!([
   {descripcion: "Malo", imagen: "assets/respuesta4.png", valor: 3}
 ])
 Usuario.create!([
-  {email: "jmdelaroca@maycom.com.gt", encrypted_password: "$2a$10$y8me3AAlS13Q8bbnCF2dL.ElrDJ8I7r2QBYMXVoFoD6a9PgREETQi", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 2, current_sign_in_at: "2014-10-28 00:34:02", last_sign_in_at: "2014-10-28 00:33:10", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
+  {email: "jmdelaroca@maycom.com.gt", password: "password", password_confirmation: "password" }
+])
+AdminUser.create!([
+  {email: "admin@example.com", password: "password", password_confirmation: "password"}
 ])
