@@ -4,7 +4,7 @@
 
 	var app = angular.module('EncuestasApp.services', []);
 
-	app.service('dataService', function($http, $log, $q) {
+	app.service('dataService', ['$http', '$log', '$q', function($http, $log, $q) {
 	    
 	    var encuestaActiva = {};
 
@@ -57,6 +57,6 @@
 	    this.getEncuestaActiva = function(){
 	    	return encuestaActiva;
 	    };
-	});
+	}]);
 
 })();

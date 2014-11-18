@@ -7,7 +7,8 @@
 	if(!app)
 		app = angular.module('EncuestasApp.controllers', []);
 	
-	app.controller('MainController', function(dataService, $log, $routeParams, $location) {
+	app.controller('MainController',[ 'dataService', '$log', '$routeParams', '$location',
+		function(dataService, $log, $routeParams, $location) {
 
 		// evitar uso de this fuera de contexto, usar variable vm que significa 'viewmodel'
 		var vm = this;
@@ -81,8 +82,8 @@
 			$log.log(vm.textoSugerencias);
 		}
 
-	});
+	}]);
 
-
+	
 	
 })();

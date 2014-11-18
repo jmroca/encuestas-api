@@ -5,7 +5,8 @@
 	var	app = angular.module('EncuestasApp.controllers', []);
 	
 
-	app.controller('EncuestaController', function(dataService, $log, $routeParams, $location) {
+	app.controller('EncuestaController', [ 'dataService', '$log', '$routeParams', '$location',
+	 	function(dataService, $log, $routeParams, $location) {
 
 		// evitar uso de this fuera de contexto, usar variable vm que significa 'viewmodel'
 		var vm = this;
@@ -55,12 +56,12 @@
 
   			$log.log(dataService.getEncuestaActiva().observaciones);
   			$log.log('EncuestaId: ' + dataService.getEncuestaActiva().id +  ' -> Pregunta# ' + pregunta.id + ' Resp:' + vm.respuestasMarcadas[pregunta.id].resp);
-  			dataService.postRespuestaMarcada(10,pregunta.id, vm.respuestasMarcadas[pregunta.id].resp);
+  			dataService.postRespuestaMarcada(dataService.getEncuestaActiva().id,pregunta.id, vm.respuestasMarcadas[pregunta.id].resp);
   			
   		};
   		
   		
-	});
+	}]);
 
 	
 })();
