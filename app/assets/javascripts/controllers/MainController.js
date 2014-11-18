@@ -78,8 +78,13 @@
 		}
 
 
-		vm.logSugerencias = function(){
-			$log.log(vm.textoSugerencias);
+		vm.actualizarSugerencias = function(){
+
+			dataService.getEncuestaActiva().observaciones = vm.textoSugerencias;
+			
+			$log.log(dataService.getEncuestaActiva().observaciones);
+
+			dataService.putActualizarEncuestaActiva();
 		}
 
 	}]);

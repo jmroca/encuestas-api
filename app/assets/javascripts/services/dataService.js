@@ -48,6 +48,12 @@
 
 	    };
 
+	    this.putActualizarEncuestaActiva = function() {
+
+	    	$http.put('/encuestas/' + encuestaActiva.id + '.json', encuestaActiva);
+
+	    };
+
 	    this.postRespuestaMarcada= function(encuestaId,preguntaId,respuestaId) {
 
 	    	$http.post('/detalle_encuesta.json', {encuesta_id: encuestaId, pregunta_id: preguntaId, respuesta_id:respuestaId});
