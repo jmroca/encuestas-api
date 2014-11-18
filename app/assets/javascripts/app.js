@@ -4,22 +4,23 @@
 												'ngMaterial', 'ngRoute', 'templates']);
 
 	// configuracion de rutas
-	app.config(function($routeProvider, $locationProvider) {
-	  $routeProvider
-	   .when('/', {
-	    templateUrl: 'mainIndex.html',
-	    controller: 'MainController',
-	    controllerAs: 'mainCtrl'
-	    
-	  })
-	   .when('/llenarEncuesta', {
-	    templateUrl: 'llenarEncuesta.html',
-	    controller: 'EncuestaController',
-	    controllerAs: 'encuestaCtrl'
-	    
-	  })
+	app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+		  
+		  $routeProvider
+		   .when('/', {
+		    templateUrl: 'mainIndex.html',
+		    controller: 'MainController',
+		    controllerAs: 'mainCtrl'
+		    
+		  })
+		   .when('/llenarEncuesta', {
+		    templateUrl: 'llenarEncuesta.html',
+		    controller: 'EncuestaController',
+		    controllerAs: 'encuestaCtrl'
+		    
+		  })
 
-	  });
+	  }]);
 
 	
 })();
