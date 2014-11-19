@@ -22,23 +22,20 @@
 	        return deferred.promise;
 	    };
 
-	    this.postCrearEncuesta = function(pfechaTramite,phoraId,pmoduloId,pnombre,pedad,ptelefono){
+
+	    this.postCrearEncuesta = function(dataEncuestaNueva){
 
 	    	// limpiar objeto de encuesta activa
 	    	encuestaActiva = {};
 
 	    	var deferred = $q.defer();
 
-	    	$http.post('/encuestas.json', {fechaTramite: pfechaTramite
-	    									, cat_hora_id: phoraId
-	    									, cat_modulo_id: pmoduloId
-	    									, nombre: pnombre
-	    									, edad: pedad
-	    									, telefono: ptelefono})
+	    	$http.post('/encuestas.json', dataEncuestaNueva)
 	    				.success(function(data) {
 			        		deferred.resolve(data);
 			        		// set objeo de encuesta activa
-			        		encuestaActiva = data;
+			        		encuestaActiva = dataEncuestaNueva;
+
 			        	}).error(function(msg,code) {
 			        		deferred.reject(msg);
 			        		$log.log(msg,code);	      
@@ -48,11 +45,13 @@
 
 	    };
 
+
 	    this.putActualizarEncuestaActiva = function() {
 
 	    	$http.put('/encuestas/' + encuestaActiva.id + '.json', encuestaActiva);
 
 	    };
+
 
 	    this.postRespuestaMarcada= function(encuestaId,preguntaId,respuestaId) {
 
@@ -60,9 +59,11 @@
 
 	    };
 
+
 	    this.getEncuestaActiva = function(){
 	    	return encuestaActiva;
 	    };
+	    
 	}]);
 
 })();

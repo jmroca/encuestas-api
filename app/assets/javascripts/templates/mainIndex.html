@@ -22,14 +22,14 @@
 	    		<div flex>
 				  <md-content>
 				    <div>
-				        <md-text-float name="fechaTramite" label="Fecha Tramite" ng-model="mainCtrl.fechaTramite" type="date" required></md-text-float>
+				        <md-text-float name="fechaTramite" label="Fecha Tramite" ng-model="mainCtrl.encuestaNueva.fechaTramite" type="date" required></md-text-float>
 				        <span class="alert alert-danger" ng-show="submitted && !nuevaEncuestaForm.$valid"> Fecha de Tramite Requerida! </span>
 				        <label for="HoraTramite" class="md-input-group">Hora Tramite:   </label>
-				        <select  id="HoraTramite" ng-model="mainCtrl.horarioTramite" ng-options="horario.descripcion for horario in mainCtrl.dataHorarios" required>
+				        <select  id="HoraTramite" ng-model="mainCtrl.encuestaNueva.cat_hora_id" ng-options="horario.id as horario.descripcion for horario in mainCtrl.dataHorarios" required>
 				    		
 				  		</select> 
 				  		<label for="modulo" class="md-input-group">Modulo Tramite:   </label>
-				  		<select  id = "modulo" ng-model="mainCtrl.moduloTramite" ng-options="modulo.descripcion for modulo in mainCtrl.dataModulos" required>
+				  		<select  id = "modulo" ng-model="mainCtrl.encuestaNueva.cat_modulo_id" ng-options="modulo.id as modulo.descripcion for modulo in mainCtrl.dataModulos" required>
 				    	</select>
 				      </div>
 				  </md-content>
@@ -50,11 +50,11 @@
 		    	<div flex>
 				  <md-content>
 				    <div>
-					    <md-text-float label="Nombre" ng-model="mainCtrl.nombrePersona">
+					    <md-text-float label="Nombre" ng-model="mainCtrl.encuestaNueva.nombre">
 					    </md-text-float>
-					        <md-text-float label="Edad" ng-model="mainCtrl.edadPersona" type="number">
+					        <md-text-float label="Edad" ng-model="mainCtrl.encuestaNueva.edad" type="number">
 					    </md-text-float>
-					        <md-text-float label="Telefono" ng-model="mainCtrl.telefonoPersona">
+					        <md-text-float label="Telefono" ng-model="mainCtrl.encuestaNueva.telefono">
 					    </md-text-float>
 					    
 					</div>
@@ -82,7 +82,7 @@
 </md-tab>
 
 <md-tab label="Sugerencias" ng-disabled='!mainCtrl.encuestaCreada'>
-	<sugerencias-encuesta registrar-sugerencias='mainCtrl.actualizarSugerencias()' texto-sugerencias='mainCtrl.textoSugerencias'></sugerencias-encuesta>
+	<sugerencias-encuesta registrar-sugerencias='mainCtrl.actualizarSugerencias()' texto-sugerencias='mainCtrl.encuestaNueva.observaciones'></sugerencias-encuesta>
 	
 </md-tab>
 

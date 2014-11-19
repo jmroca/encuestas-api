@@ -17,23 +17,26 @@
      	vm.$routeParams = $routeParams;
     	$log.log('MainController loaded!');
 
-		vm.fechaTramite = new Date();
-		vm.nombrePersona = '';
-		vm.edadPersona = '';
-		vm.telefonoPersona = '';
-		vm.textoSugerencias = '';
-		vm.horarioTramite = {};
-		vm.moduloTramite = {};
-		vm.dataEncuesta = {};
 		vm.encuestaCreada = false;
 		vm.selectedTab = 0;
+
+		// objeto que almacena la encuestra creada
+		vm.encuestaNueva = {
+					id: 0,
+					cat_modulo_id: 1,
+					cat_hora_id: 1,
+					fechaTramite: new Date(),
+					nombre: "",
+					edad: null,
+					telefono: "",
+					observaciones: ""
+				};
 
 		// obtener datos via servicio
 		dataService.getCatalogo('cat_hora')
 			.then(
 	           function(data) {
 	           vm.dataHorarios = data;
-	           vm.horarioTramite = data[0];
 	           $log.log(data.length);
 	          },
 	          function(error) {
@@ -45,7 +48,6 @@
 			.then(
 	           function(data) {
 	           vm.dataModulos = data;
-	           vm.moduloTramite = data[0];
 	           $log.log(data.length);
 	          },
 	          function(error) {
@@ -57,14 +59,18 @@
 
 			$log.log('Crear Encuesta');
 
-			dataService.postCrearEncuesta(vm.fechaTramite, vm.horarioTramite.id,vm.moduloTramite.id,vm.nombrePersona,vm.edadPersona,vm.telefonoPersona)
+			dataService.postCrearEncuesta(vm.encuestaNueva)
 				.then(
 					function(data){
-						vm.dataEncuesta = data;
-						$log.log(data.id);
-						vm.selectedTab = 1;
-						vm.textoSugerencias = dataService.getEncuestaActiva().observaciones;
+						
+						// asociamos objeto de binding a data devuelta por API
+						vm.encuestaNueva.id = data.id;
 
+						$log.log(vm.encuestaNueva.id);
+						
+						// cambiar a tab de responder encuesta
+						vm.selectedTab = 1;
+						
 					},
 					function(error) {
 						vm.encuestaCreada = false;
@@ -80,8 +86,6 @@
 
 		vm.actualizarSugerencias = function(){
 
-			dataService.getEncuestaActiva().observaciones = vm.textoSugerencias;
-			
 			$log.log(dataService.getEncuestaActiva().observaciones);
 
 			dataService.putActualizarEncuestaActiva();
