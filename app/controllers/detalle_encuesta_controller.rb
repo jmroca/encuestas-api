@@ -14,8 +14,9 @@ class DetalleEncuestaController < ApplicationController
 
   		# validar que se hayan obtenido datos
   		if @detalle.count > 0
-  			# asociar la respuesta 
- 			@detalle.first.respuesta = Respuesta.find(params[:respuesta_id])
+  			
+        # asociar la respuesta 
+ 			  @detalle.first.respuesta = Respuesta.find(params[:respuesta_id])
  	
 	      if @detalle.first.save
 	        format.json { render json: @detalle.first, status: :ok }

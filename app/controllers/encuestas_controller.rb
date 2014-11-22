@@ -12,11 +12,7 @@ class EncuestasController < ApplicationController
   def show
   end
 
-  # GET /encuestas/new
-  def new
-    @encuesta = Encuesta.new
-  end
-
+  
   # GET /encuestas/1/edit
   def edit
   end
@@ -24,22 +20,31 @@ class EncuestasController < ApplicationController
   # POST /encuestas
   # POST /encuestas.json
   def create
+
+    puts params[:fechaTramite]
+
     # crear encuesta en base a parametros validados
     @encuesta = Encuesta.new(encuesta_params)
 
+    puts @encuesta.fechaTramite
+
     # asociar las preguntas a la encuesta creada
-    @encuesta.pregunta = Pregunta.all
-        
+    @encuesta.pregunta << Pregunta.all
+
     respond_to do |format|
       if @encuesta.save
-
+        
         format.html { redirect_to @encuesta, notice: 'Encuesta was successfully created.' }
         format.json { render :show, status: :created, location: @encuesta }
+      
       else
+      
         format.html { render :new }
         format.json { render json: @encuesta.errors, status: :unprocessable_entity }
+      
       end
     end
+  
   end
 
   # PATCH/PUT /encuestas/1

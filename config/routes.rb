@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   
   devise_for :usuarios
-  resources :encuestas
+  resources :encuestas, except: [:new]
   resources :pregunta, only: [:show,:index]
   resources :respuesta, only: [:index,:show]
   resources :detalle_encuesta, only:[:create]

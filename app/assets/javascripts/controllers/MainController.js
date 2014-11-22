@@ -59,6 +59,8 @@
 
 			$log.log('Crear Encuesta');
 
+			$log.log('Fecha Tramite: ' + vm.encuestaNueva.fechaTramite);
+
 			dataService.postCrearEncuesta(vm.encuestaNueva)
 				.then(
 					function(data){
