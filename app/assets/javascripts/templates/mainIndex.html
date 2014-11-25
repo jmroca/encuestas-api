@@ -1,17 +1,52 @@
 
+<section layout="column" flex>
 
-<md-tabs selected='mainCtrl.selectedTab'>
+<md-sidenav class="md-sidenav-left" md-component-id="left">
+
+    <md-toolbar class="md-medium-tall" md-theme="indigo">
+      <h1 class="md-toolbar-tools" style="padding-top:25px;">
+        Menu
+      </h1>
+    </md-toolbar>
+
+    
+  </md-sidenav>
+
+
+<md-toolbar class="md-medium-tall" md-theme="indigo">
+	<div layout="row">
+		<div>
+			<div class="md-toolbar-tools" ng-click="mainCtrl.openLeftMenu()">
+        		<button class="menu-icon" show-phone show-tablet aria-label="Toggle Menu" style="position: relative; top: 5px;">
+          			<md-icon icon="assets/menu.svg" style="width: 32px; height: 32px;"></md-icon>
+        		</button>
+        	</div>
+        </div>
+      	<div flex>
+      		<h3 class="md-toolbar-tools" style="position: relative; top:20px;" layout-align="center center">
+			<span>Maycom S.A. - Encuestas de Satisfaccion - CA-R-07</span>
+			</h3>
+		</div>
+    </div>
+	
+</md-toolbar>
+
+</section>
+
+
+<md-tabs md-selected='mainCtrl.selectedTab'>
    <md-tab label="Datos Encuesta" >
+	
 	<form name="nuevaEncuestaForm" style="padding: 20px;" ng-submit="nuevaEncuestaForm.$valid && mainCtrl.crearEncuesta()" novalidate >
 	
 	<section>
 	        			    
-	<div layout="vertical" layout-sm="horizontal" layout-padding>
+	<div layout="row" layout-sm="column" layout-padding>
 		<div flex>
-			<div layout="vertical">
+			<div layout="column">
 	        	<div flex>
 		        	
-		        	<md-toolbar >
+		        	<md-toolbar>
 		      		<h2 class="md-toolbar-tools">
 		        	
 		        	<span>Datos del Tramite</span>
@@ -20,7 +55,6 @@
 	    			
 	    		</div> 
 	    		<div flex>
-				  <md-content>
 				    <div>
 				        <md-text-float name="fechaTramite" label="Fecha Tramite" ng-model="mainCtrl.encuestaNueva.fechaTramite" type="date" required></md-text-float>
 				        <span class="alert alert-danger" ng-show="submitted && !nuevaEncuestaForm.$valid"> Fecha de Tramite Requerida! </span>
@@ -32,14 +66,14 @@
 				  		<select  id = "modulo" ng-model="mainCtrl.encuestaNueva.cat_modulo_id" ng-options="modulo.id as modulo.descripcion for modulo in mainCtrl.dataModulos" required>
 				    	</select>
 				      </div>
-				  </md-content>
+				  
 				</div>
 			</div>
 		      	
 		</div>
 
 	    <div flex>
-	    	<div layout="vertical">
+	    	<div layout="column">
 	    		<div flex>
 		        	<md-toolbar>
 		      		<h2 class="md-toolbar-tools">
@@ -48,7 +82,6 @@
 		    		</md-toolbar>
 		    	<div>
 		    	<div flex>
-				  <md-content>
 				    <div>
 					    <md-text-float label="Nombre" ng-model="mainCtrl.encuestaNueva.nombre">
 					    </md-text-float>
@@ -58,7 +91,7 @@
 					    </md-text-float>
 					    
 					</div>
-				  </md-content>
+				  
 				</div>
 			</div>	
 	    </div>
@@ -66,27 +99,42 @@
 		
 	</section>
 
+		<div layout = "column" layout-sm="row" layout-align="center center">
+			<div flex ng-hide="mainCtrl.encuestaCreada">
+				<md-button class="md-raised md-primary" aria-label="mainCtrl.labelButton" type="submit" ng-click="submitted=true">
+		   		 Crear Nueva Encuesta
+		 		</md-button>
+			</div>
+			
+		</div>
 
-	<div layout = "horizontal" layout-sm="vertical" layout-align="center center">
-		<div flex>
-			<md-button class="md-raised md-primary" aria-label="Llenar Encuesta" type="submit" ng-click="submitted=true">
-	   		 Llenar Encuesta Satisfaccion
+	</form>
+
+	<div ng-show="mainCtrl.encuestaCreada" layout = "column" layout-sm="row" layout-align="center center">
+		<div flex >
+			<md-button class="md-raised md-primary" aria-label="Actualizar Datos" ng-click="mainCtrl.actualizarDatosEncuesta()">
+	   		 Actualizar Datos Encuesta
+	 		</md-button>
+	 	</div>
+	 	<div flex>
+			<md-button class="md-raised md-warn" aria-label="Limpiar Pantalla" ng-click="mainCtrl.limpiarPantalla(); nuevaEncuestaForm.setPristine()">
+	   		 Limpiar Pantalla
 	 		</md-button>
 		</div>
 	</div>
-</form>
+
 </md-tab>
 
-<md-tab label="Responder Encuesta" ng-disabled='!mainCtrl.encuestaCreada'>
+<md-tab label="Responder Encuesta" ng-disabled='!mainCtrl.encuestaCreada' md-active='!mainCtrl.encuestaCreada'>
 	<llenar-encuesta ng-show="mainCtrl.encuestaCreada"> </llenar-encuesta>
 </md-tab>
 
 <md-tab label="Sugerencias" ng-disabled='!mainCtrl.encuestaCreada'>
-	<sugerencias-encuesta registrar-sugerencias='mainCtrl.actualizarSugerencias()' texto-sugerencias='mainCtrl.encuestaNueva.observaciones'></sugerencias-encuesta>
+	<sugerencias-encuesta registrar-sugerencias='mainCtrl.actualizarDatosEncuesta()' texto-sugerencias='mainCtrl.encuestaNueva.observaciones'></sugerencias-encuesta>
 	
 </md-tab>
 
 </md-tabs>
 
-  <div>Icons made by Yannick from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
 
+  <div>Icons made by Yannick from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>         is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>

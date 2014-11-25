@@ -2,10 +2,19 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+	background-color: #FFFDE7;
+}
+
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
 .ng-invalid.required {
 	border-color: #FA787E;
+}
+
+.menu-icon {
+  background: none;
+  border: none;
 }

@@ -2,7 +2,7 @@
 
 <md-content class="md-padding">
   	<div ng-repeat="pregunta in encuestaCtrl.dataPreguntas">
-  		<div layout="vertical" layout-sm="horizontal" layout-align="start">
+  		<div layout="row" layout-sm="column" layout-align="start">
 			<div flex-sm="33" flex>
   				<p> {{pregunta.descripcion}}</p>
   			</div>
@@ -10,7 +10,7 @@
 				  <md-radio-group ng-model="encuestaCtrl.respuestasMarcadas[pregunta.id].resp" 
 			    ng-click="encuestaCtrl.marcarRespuestaPregunta(pregunta)">
 
-			    	<div layout="horizontal">
+			    	<div layout="row">
 			    		
 				        <md-radio-button ng-repeat="respuesta in encuestaCtrl.dataRespuestas" ng-value="respuesta.id" aria-label="{{ respuesta.descripcion }}">
 				        <div>
