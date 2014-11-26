@@ -7,8 +7,8 @@
 	if(!app)
 		app = angular.module('EncuestasApp.controllers', ['ngMaterial']);
 	
-	app.controller('MainController',[ 'dataService', '$log', '$mdToast', '$location', '$mdSidenav',
-		function(dataService, $log, $mdToast, $location, $mdSidenav) {
+	app.controller('MainController',[ 'dataService', '$log', '$mdToast', '$location', '$mdSidenav', '$rootScope',
+		function(dataService, $log, $mdToast, $location, $mdSidenav, $rootScope) {
 
 		// evitar uso de this fuera de contexto, usar variable vm que significa 'viewmodel'
 		var vm = this;
@@ -94,8 +94,12 @@
 			$mdToast.show($mdToast.simple().content('Actualizacion de Datos Realizada!'));
 		}
 
-		vm.limpiarPantalla = function(){
+		
+		// resetear objetos utilizados para almacenar data de encuesta activa.
+		vm.resetDataEncuesta = function(){
 
+			// indicar a otro controlador que debe resetear la data.
+			$rootScope.$emit('RESET_DATA');
 
 			// limpiar objeto que almacena la encuestra creada
 			vm.encuestaNueva = {
@@ -107,15 +111,16 @@
 						edad: null,
 						telefono: "",
 						observaciones: ""
-					};
+				};
 
 			// resetear bandera para permitir nueva encuesta.
 			vm.encuestaCreada = false;
 		}
 
- vm.openLeftMenu = function() {
-    $mdSidenav('left').toggle();
-  };
+
+ 		vm.openLeftMenu = function() {
+    		$mdSidenav('left').toggle();
+  		}
 
 
 	}]);

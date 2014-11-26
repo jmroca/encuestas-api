@@ -5,15 +5,13 @@
 	var	app = angular.module('EncuestasApp.controllers', []);
 	
 
-	app.controller('EncuestaController', [ 'dataService', '$log', '$routeParams', '$location',
-	 	function(dataService, $log, $routeParams, $location) {
+	app.controller('EncuestaController', [ 'dataService', '$log', '$rootScope',
+	 	function(dataService, $log, $rootScope) {
 
 		// evitar uso de this fuera de contexto, usar variable vm que significa 'viewmodel'
 		var vm = this;
 
-		vm.$location = $location;
-     	vm.$routeParams = $routeParams;
-    	$log.log('EncuestaController loaded!');
+		$log.log('EncuestaController loaded!');
 
 		vm.title = 'Encuesta Satisfaccion';
 		
@@ -51,6 +49,32 @@
 			{resp : '0'},
 			{resp : '0'}
 		];
+
+		// escuchando el evento que indica la necesidad de resetear la data de la encuesta activa.
+		$rootScope.$on('RESET_DATA', function() {
+
+			var i;
+
+			$log.log('Reset Data Encuesta!');
+
+			for(i=0; i< vm.respuestasMarcadas.length; i++)
+				vm.respuestasMarcadas[i].resp = '0';
+
+			// limpiar objeto que almacena la encuestra creada
+			var activa = dataService.getEncuestaActiva();
+
+			activa = {
+						id: 0,
+						cat_modulo_id: 1,
+						cat_hora_id: 1,
+						fechaTramite: new Date(),
+						nombre: "",
+						edad: null,
+						telefono: "",
+						observaciones: ""
+					};
+
+		});
 
 		vm.marcarRespuestaPregunta = function(pregunta){
 

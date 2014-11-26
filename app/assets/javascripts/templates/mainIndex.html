@@ -22,10 +22,17 @@
         		</button>
         	</div>
         </div>
-      	<div flex>
-      		<h3 class="md-toolbar-tools" style="position: relative; top:20px;" layout-align="center center">
-			<span>Maycom S.A. - Encuestas de Satisfaccion - CA-R-07</span>
-			</h3>
+ 		<div flex>
+ 			<div layout = "row" layout-align="center center">
+ 				<div>
+ 					<img ng-Src="assets/logo.png" style="height:80px; width: 67px">
+ 				</div>
+      			<div>
+      				<h3 class="md-toolbar-tools" style="position: relative; top:10px;" >
+						<span>Maycom S.A. - Encuestas de Satisfaccion - CA-R-07</span>
+					</h3>
+				</div>
+			</div>
 		</div>
     </div>
 	
@@ -117,7 +124,7 @@
 	 		</md-button>
 	 	</div>
 	 	<div flex>
-			<md-button class="md-raised md-warn" aria-label="Limpiar Pantalla" ng-click="mainCtrl.limpiarPantalla(); nuevaEncuestaForm.setPristine()">
+			<md-button class="md-raised md-warn" aria-label="Limpiar Pantalla" ng-click="mainCtrl.resetDataEncuesta(); nuevaEncuestaForm.setPristine()">
 	   		 Limpiar Pantalla
 	 		</md-button>
 		</div>
